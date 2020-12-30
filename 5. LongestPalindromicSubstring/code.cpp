@@ -22,11 +22,12 @@
 // s consist of only digits and English letters (lower-case and/or upper-case),
 
 #include <string>
+using namespace std;
 
 class Solution {
  public:
   string longestPalindrome(string s) {
-    int size = s.size();
+    const int size = s.size();
 
     if (size == 0) {
       return "";

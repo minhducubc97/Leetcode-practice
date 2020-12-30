@@ -23,6 +23,8 @@
 
 // Constraints:
 // -2^31 <= x <= 2^31 - 1
+#include <string>
+using namespace std;
 
 class Solution {
  public:

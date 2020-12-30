@@ -28,6 +28,7 @@
 // 1 <= numRows <= 1000
 
 #include <string>
+using namespace std;
 
 class Solution {
  public:
