@@ -25,3 +25,44 @@
 // 1 <= candidates.length <= 100
 // 1 <= candidates[i] <= 50
 // 1 <= target <= 30
+
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+class Solution {
+ public:
+  vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+    sort(candidates.begin(), candidates.end());
+    vector<vector<int>> result;
+    vector<int> curList;
+    combinationSum2Recursion(candidates, target, result, curList, 0);
+    return result;
+  }
+
+  void combinationSum2Recursion(vector<int>& candidates, int target,
+                                vector<vector<int>>& result,
+                                vector<int> curList, int curIndex) {
+    bool sameLevel = false;
+    for (; curIndex < candidates.size(); curIndex++) {
+      if (sameLevel && curIndex > 0 &&
+          candidates[curIndex] == candidates[curIndex - 1]) {
+        continue;
+      }
+      int remaining = target - candidates[curIndex];
+      if (remaining == 0) {
+        curList.push_back(candidates[curIndex]);
+        result.push_back(curList);
+        return;
+      } else if (remaining > 0) {
+        vector<int> curListCopy(curList);
+        curListCopy.push_back(candidates[curIndex]);
+        combinationSum2Recursion(candidates, remaining, result, curListCopy,
+                                 curIndex + 1);
+        sameLevel = true;
+      } else {
+        return;
+      }
+    }
+  }
+};
