@@ -4,8 +4,8 @@ This repository contains my solution for problems on Leetcode. Most of the code 
 
 Progress:
 
-- Easy: 11
+- Easy: 12
 - Medium: 19
 - Hard: 7
 
-Notable problem: 3Sum, 4Sum, SudokuSolver,...
+Notable problems: 3Sum, 4Sum, SudokuSolver,...
