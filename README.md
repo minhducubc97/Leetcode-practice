@@ -5,7 +5,7 @@ This repository contains my solution for problems on Leetcode. Most of the code 
 Progress:
 
 - Easy: 12
-- Medium: 19
+- Medium: 20
 - Hard: 7
 
 Notable problems: 3Sum, 4Sum, SudokuSolver,...
