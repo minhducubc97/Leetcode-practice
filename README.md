@@ -6,6 +6,6 @@ Progress:
 
 - Easy: 12
 - Medium: 21
-- Hard: 7
+- Hard: 8
 
 Notable problems: 3Sum, 4Sum, SudokuSolver,...
