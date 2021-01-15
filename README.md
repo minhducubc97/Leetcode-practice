@@ -6,6 +6,6 @@ Progress:
 
 - Easy: 12
 - Medium: 22
-- Hard: 9
+- Hard: 10
 
 Notable problems: 3Sum, SudokuSolver, Trapping Rain Water, ...
