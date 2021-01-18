@@ -59,7 +59,6 @@ class Solution {
       merged.push_back(nums2[j]);
       j++;
     }
-    for (auto i : merged) cout << i << ' ';
 
     if (merged.size() % 2 != 0) {
       return merged[merged.size() / 2];
