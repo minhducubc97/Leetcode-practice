@@ -5,7 +5,7 @@ This repository contains my solution for problems on Leetcode. Most of the code 
 Progress:
 
 - Easy: 12
-- Medium: 26
+- Medium: 27
 - Hard: 11
 
 Notable problems: 3Sum, SudokuSolver, Trapping Rain Water, ...
