@@ -29,34 +29,18 @@ struct ListNode {
 class Solution {
  public:
   ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-    if (l1 == NULL) {
-      return l2;
-    }
-    if (l2 == NULL) {
-      return l1;
-    }
-    ListNode* result = new ListNode(0);
-    ListNode* resultHead = result;
-    while (l1 != NULL || l2 != NULL) {
-      if (l1 == NULL) {
-        result->next = new ListNode(l2->val);
-        l2 = l2->next;
-      } else if (l2 == NULL) {
-        result->next = new ListNode(l1->val);
+    ListNode *dummy = new ListNode(-1), *cur = dummy;
+    while (l1 && l2) {
+      if (l1->val < l2->val) {
+        cur->next = l1;
         l1 = l1->next;
-      } else if (l1->val <= l2->val) {
-        result->next = new ListNode(l1->val);
-        l1 = l1->next;
-      } else if (l1->val > l2->val) {
-        result->next = new ListNode(l2->val);
+      } else {
+        cur->next = l2;
         l2 = l2->next;
       }
-      result = result->next;
+      cur = cur->next;
     }
-    result = resultHead->next;
-    resultHead->next = NULL;
-    delete (resultHead);
-
-    return result;
+    cur->next = l1 ? l1 : l2;
+    return dummy->next;
   }
 };

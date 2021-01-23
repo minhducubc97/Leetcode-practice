@@ -46,29 +46,16 @@ using namespace std;
 class Solution {
  public:
   int romanToInt(string s) {
-    unordered_map<char, int> hashMap({{'I', 1},
-                                      {'V', 5},
-                                      {'X', 10},
-                                      {'L', 50},
-                                      {'C', 100},
-                                      {'D', 500},
-                                      {'M', 1000}});
-    int result = 0;
-    int lastValue = 1001;
-    int newLastValue = 0;
-    for (int i = 0; i < s.size(); i++) {
-      auto search = hashMap.find(s[i]);
-      if (search != hashMap.end()) {
-        if (lastValue >= search->second) {
-          result += search->second;
-          lastValue = search->second;
-        } else {
-          result += -2 * lastValue + search->second;
-          lastValue = search->second - lastValue;
-          lastValue = 1001;
-        }
-      }
+    int res = 0;
+    unordered_map<char, int> m{{'I', 1},   {'V', 5},   {'X', 10},  {'L', 50},
+                               {'C', 100}, {'D', 500}, {'M', 1000}};
+    for (int i = 0; i < s.size(); ++i) {
+      int val = m[s[i]];
+      if (i == s.size() - 1 || m[s[i + 1]] <= m[s[i]])
+        res += val;
+      else
+        res -= val;
     }
-    return result;
+    return res;
   }
 };

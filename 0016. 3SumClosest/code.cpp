@@ -19,16 +19,11 @@ using namespace std;
 class Solution {
  public:
   int threeSumClosest(vector<int>& nums, int target) {
-    if (nums.size() < 3) {
-      return 0;
-    }
+    if (nums.size() < 3) return 0;
 
     sort(nums.begin(), nums.end());
-
-    int left;
-    int right;
+    int left, right, sum;
     int currClosestSum = nums[0] + nums[1] + nums[2];
-    int sum;
     for (int i = 0; i < nums.size() - 2; i++) {
       left = i + 1;
       right = nums.size() - 1;
