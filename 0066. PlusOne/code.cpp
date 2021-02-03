@@ -21,3 +21,32 @@
 // Constraints:
 // 1 <= digits.length <= 100
 // 0 <= digits[i] <= 9
+
+#include <vector>
+using namespace std;
+
+class Solution {
+ public:
+  vector<int> plusOne(vector<int>& digits) {
+    if (!digits.size()) return {};
+    int n = digits.size(), idx = 0;
+    while (idx < n) {
+      if (digits[idx] != 9) break;
+      idx++;
+    }
+    if (idx == n) {
+      vector<int> result(n + 1, 0);
+      result[0] = 1;
+      return result;
+    }
+    int remainder = 1;
+    idx = n - 1;
+    vector<int> result(digits);
+    while (idx >= 0 && remainder) {
+      result[idx] = (digits[idx] + remainder) % 10;
+      remainder = (digits[idx] + remainder) / 10;
+      idx--;
+    }
+    return result;
+  }
+};
