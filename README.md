@@ -6,6 +6,6 @@ Progress:
 
 - Easy: 16
 - Medium: 36
-- Hard: 15
+- Hard: 16
 
 Notable problems: SudokuSolver, Trapping Rain Water, N-Queens, ...
