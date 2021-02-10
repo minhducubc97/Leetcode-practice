@@ -17,3 +17,29 @@
 // s and t consist of English letters.
 
 // Follow up: Could you find an algorithm that runs in O(n) time?
+
+#include <string>
+#include <unordered_map>
+using namespace std;
+
+class Solution {
+ public:
+  string minWindow(string s, string t) {
+    unordered_map<char, int> umap;
+    int left = 0, counter = 0, n = s.size(), m = t.size(), minLen = INT_MAX,
+        minLeft = -1;
+    for (int i = 0; i < m; i++) ++umap[t[i]];
+    for (int right = 0; right < n; right++) {
+      if (--umap[s[right]] >= 0) counter++;
+      while (counter == m) {
+        if (minLen > right - left + 1) {
+          minLen = right - left + 1;
+          minLeft = left;
+        }
+        if (++umap[s[left]] > 0) counter--;
+        left++;
+      }
+    }
+    return minLeft == -1 ? "" : s.substr(minLeft, minLen);
+  }
+};
