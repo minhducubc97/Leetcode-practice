@@ -4,7 +4,7 @@ This repository contains my solution for problems on Leetcode. All of the code w
 
 Progress:
 
-- Easy: 18
+- Easy: 19
 - Medium: 46
 - Hard: 18
 
