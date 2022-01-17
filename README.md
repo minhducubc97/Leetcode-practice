@@ -5,7 +5,8 @@ This repository contains my solution for problems on Leetcode. All of the code w
 Progress:
 
 - Easy: 19
-- Medium: 46
-- Hard: 19
+- Medium: 47
+- Hard: 21
 
+Tricky problems: 84, 85, 87 (DP)
 Notable problems: SudokuSolver, Trapping Rain Water, N-Queens, ...
