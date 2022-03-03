@@ -4,8 +4,8 @@ This repository contains my solution for problems on Leetcode. All of the code w
 
 Progress:
 
-- Easy: 21
-- Medium: 60
+- Easy: 26
+- Medium: 69
 - Hard: 20
 
 Tricky problems: 84, 85, 87 (DP)
