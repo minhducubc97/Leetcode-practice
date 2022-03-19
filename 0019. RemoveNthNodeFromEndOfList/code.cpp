@@ -28,31 +28,23 @@ struct ListNode {
 };
 
 class Solution {
- public:
-  ListNode* removeNthFromEnd(ListNode* head, int n) {
-    ListNode* prev = head;
-    ListNode* tail = head;
-    ListNode* toDel = head;
-    ListNode* nextt = head;
-    if (head == NULL) {
-      return NULL;
+public:
+    ListNode* removeNthFromEnd(ListNode* head, int n) {
+        ListNode* toEnd = head;
+        ListNode* prev = head;
+        while (n > 0) {
+            toEnd = toEnd->next;
+            --n;
+        }
+        if (toEnd == nullptr) {
+            return head->next;
+        }
+        while (toEnd->next != nullptr) {
+            toEnd = toEnd->next;
+            prev = prev->next;
+        }
+        ListNode* toDel = prev->next;
+        prev->next = toDel->next;
+        return head;
     }
-    for (int i = 1; i < n; i++) {
-      tail = tail->next;
-    }
-    while (tail->next != NULL) {
-      tail = tail->next;
-      prev = toDel;
-      toDel = toDel->next;
-    }
-    if (toDel == head) {
-      return toDel->next;
-    } else {
-      nextt = toDel->next;
-      delete (toDel);
-      toDel = NULL;
-      prev->next = nextt;
-      return head;
-    }
-  }
 };
