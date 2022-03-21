@@ -22,29 +22,26 @@
 using namespace std;
 
 class Solution {
- public:
-  vector<vector<int>> permute(vector<int>& nums) {
-    vector<vector<int>> result;
-    vector<bool> visited(nums.size(), false);
-    vector<int> curPermutation;
-    permuteDFS(nums, result, visited, curPermutation, 0);
-    return result;
-  }
-
-  void permuteDFS(vector<int>& nums, vector<vector<int>>& result,
-                  vector<bool>& visited, vector<int>& curPermutation,
-                  int level) {
-    if (level == nums.size()) {
-      result.push_back(curPermutation);
-      return;
+public:
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int>> result;
+        vector<int> curPath;
+        queue<int> toDo;
+        for (int i = 0; i < nums.size(); i++) toDo.push(nums[i]);
+        permuteHelper(result, toDo, curPath);
+        return result;
     }
-    for (int i = 0; i < nums.size(); i++) {
-      if (visited[i]) continue;
-      visited[i] = true;
-      curPermutation.push_back(nums[i]);
-      permuteDFS(nums, result, visited, curPermutation, level + 1);
-      curPermutation.pop_back();
-      visited[i] = false;
+    
+    void permuteHelper(vector<vector<int>>& result, queue<int>& toDo, vector<int>& curPath) {
+        if (toDo.empty()) result.push_back(curPath);
+        int size = toDo.size();
+        for (int i = 0; i < size; i++) {
+            int element = toDo.front();
+            toDo.pop();
+            curPath.push_back(element);
+            permuteHelper(result, toDo, curPath);
+            curPath.pop_back();
+            toDo.push(element);
+        }
     }
-  }
 };
