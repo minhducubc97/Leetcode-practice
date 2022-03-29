@@ -19,3 +19,22 @@
 
 // Follow up: Could you optimize your algorithm to use only O(rowIndex) extra space?
 
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        vector<int> prev = {};
+        vector<int> cur = {};
+        getRowHelper(prev, cur, rowIndex);
+        return cur;
+    }
+    
+    void getRowHelper(vector<int>& prev, vector<int>& cur, int rowIndex) {
+        if (rowIndex == -1) return;
+        getRowHelper(prev, cur, rowIndex-1);
+        for (int i = 1; i < prev.size(); i++) {
+            cur[i] = prev[i] + prev[i-1];
+        }
+        cur.push_back(1);
+        prev = cur;
+    }
+};
