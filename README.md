@@ -5,7 +5,7 @@ This repository contains my solution for problems on Leetcode. All of the code w
 Progress:
 
 - Easy: 52
-- Medium: 96
+- Medium: 97
 - Hard: 22
 
 Tricky problems: 84, 85, 87 (DP)
