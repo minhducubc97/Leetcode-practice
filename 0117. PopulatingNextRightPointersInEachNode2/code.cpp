@@ -26,3 +26,55 @@
 // Follow-up:
 // You may only use constant extra space.
 // The recursive approach is fine. You may assume implicit stack space does not count as extra space for this problem.
+
+/*
+// Definition for a Node.
+class Node {
+public:
+    int val;
+    Node* left;
+    Node* right;
+    Node* next;
+
+    Node() : val(0), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val) : val(_val), left(NULL), right(NULL), next(NULL) {}
+
+    Node(int _val, Node* _left, Node* _right, Node* _next)
+        : val(_val), left(_left), right(_right), next(_next) {}
+};
+*/
+
+class Solution {
+public:
+    Node* connect(Node* root) {
+        Node* parent = root;
+        Node* firstNextLevel = nullptr;
+        Node* cur = nullptr;
+        while (parent != nullptr) {
+            while (parent != nullptr) {
+                if (parent->left != nullptr) {
+                    if (cur == nullptr) {
+                        firstNextLevel = parent->left;
+                    } else {
+                        cur->next = parent->left;
+                    }
+                    cur = parent->left;
+                }
+                if (parent->right != nullptr) {
+                    if (cur == nullptr) {
+                        firstNextLevel = parent->right;
+                    } else {
+                        cur->next = parent->right;
+                    }
+                    cur = parent->right;
+                }
+                parent = parent->next;
+            }
+            parent = firstNextLevel;
+            firstNextLevel = nullptr;
+            cur = nullptr;
+        }
+        return root;
+    }
+};
