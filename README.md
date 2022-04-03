@@ -8,5 +8,4 @@ Progress:
 - Medium: 97
 - Hard: 22
 
-Tricky problems: 84, 85, 87 (DP)
 Notable problems: SudokuSolver, Trapping Rain Water, N-Queens, ...
