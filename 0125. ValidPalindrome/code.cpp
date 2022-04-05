@@ -22,3 +22,21 @@
 // 1 <= s.length <= 2 * 105
 // s consists only of printable ASCII characters.
 
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int leftIdx = 0, rightIdx = s.size()-1;
+        while (leftIdx < rightIdx) {
+            char leftChar = tolower(s[leftIdx]);
+            char rightChar = tolower(s[rightIdx]);
+            if (!isalnum(leftChar)) ++leftIdx;
+            else if (!isalnum(rightChar)) --rightIdx;
+            else if (leftChar != rightChar) return false;
+            else {
+                ++leftIdx;
+                --rightIdx;
+            }
+        }
+        return true;
+    }
+};
