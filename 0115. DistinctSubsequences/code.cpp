@@ -28,3 +28,15 @@
 // 1 <= s.length, t.length <= 1000
 // s and t consist of English letters.
 
+class Solution {
+public:
+    int numDistinct(string s, string t) {
+        int m = t.length(), n = s.length();
+        vector<vector<unsigned long long>> dp(m + 1, vector<unsigned long long> (n + 1, 0));
+        for (unsigned long long j = 0; j <= n; j++) dp[0][j] = 1;
+        for (unsigned long long j = 1; j <= n; j++)
+            for (unsigned long long i = 1; i <= m; i++)
+                dp[i][j] = dp[i][j - 1] + (t[i - 1] == s[j - 1] ? dp[i - 1][j - 1] : 0);
+        return dp[m][n];
+    }
+};  
