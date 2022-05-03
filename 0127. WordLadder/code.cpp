@@ -23,3 +23,43 @@
 // beginWord, endWord, and wordList[i] consist of lowercase English letters.
 // beginWord != endWord
 // All the words in wordList are unique.
+
+class Solution {
+public:
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        unordered_set<string> st (wordList.begin(), wordList.end());
+        unordered_set<string> visited;
+        int curLength = INT_MAX;
+        queue<vector<string>> q;
+        q.push({beginWord});
+        int count = 0;
+        while (!q.empty()) {
+            int size = q.size();
+            while (size--) {
+                auto curPath = q.front();
+                q.pop();
+                if (curPath.size() >= curLength) continue;
+                string last = curPath.back();
+                for (int i = 0; i < last.size(); ++i) {
+                    auto temp = last;
+                    for (char ch = 'a'; ch <= 'z'; ++ch) {
+                        temp[i] = ch;
+                        if (st.find(temp) != st.end()) {
+                            auto newPath = curPath;
+                            newPath.push_back(temp);
+                            visited.insert(temp);
+                            if (temp == endWord) {
+                                if (newPath.size() < curLength) {
+                                    curLength = newPath.size();
+                                }
+                            }
+                            else q.push(newPath);
+                        }
+                    }
+                }
+            }
+            for (auto& str : visited) st.erase(str);
+        }
+        return (curLength == INT_MAX) ? 0 : curLength;
+    }
+};
