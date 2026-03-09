@@ -30,27 +30,28 @@
 using namespace std;
 
 class Solution {
- public:
-  int lengthOfLongestSubstring(string s) {
-    unordered_map<char, int> hashMap;
-    int maxSize = 0;
-    int currSize = 0;
-    int lastDuplicateIndex = 0;
-    for (int i = 0; i < s.size(); i++) {
-      auto search = hashMap.find(s[i]);
-      if (search == hashMap.end()) {
-        hashMap.insert(pair<char, int>(s[i], i));
-        currSize++;
-      } else {
-        maxSize = (currSize > maxSize) ? currSize : maxSize;
-        lastDuplicateIndex = (lastDuplicateIndex > search->second)
-                                 ? lastDuplicateIndex
-                                 : search->second;
-        currSize = i - lastDuplicateIndex;
-        search->second = i;
-      }
+public:
+    int lengthOfLongestSubstring(string s) {
+        int size = s.size();
+        if (size == 0) return 0;
+        unordered_map<char, int> hashMap;
+        int maxLength = 1;
+        int rightIdx = 0;
+        int leftIdx = 0;
+        while (rightIdx < size) {
+            auto search = hashMap.find(s[rightIdx]);
+            if (search != hashMap.end()) {
+                maxLength = (rightIdx - leftIdx) > maxLength ? 
+                    rightIdx - leftIdx : maxLength;
+                leftIdx = search->second + 1 > leftIdx ? 
+                    search->second + 1 : leftIdx;
+                search->second = rightIdx;
+            } else {
+                hashMap.insert({s[rightIdx], rightIdx});
+            }
+            ++rightIdx;
+        }
+        maxLength = (rightIdx - leftIdx) > maxLength ? rightIdx - leftIdx : maxLength;
+        return maxLength;
     }
-    maxSize = (currSize > maxSize) ? currSize : maxSize;
-    return maxSize;
-  }
 };
